@@ -2,23 +2,14 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+        <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">PUBLICACION</a>
         <a class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
 </nav>
 
 <!-- main app container -->
-<div class="app-container" [ngClass]="{ 'bg-light': user }">
+<div class="app-container" [ngClass]="{ 'bg-light': user }" style="background-image: url(https://image.freepik.com/vector-gratis/santa-trineo-muneco-nieve-iglu_1308-41355.jpg);">
     <alert></alert>
     <router-outlet></router-outlet>
 </div>
 
-<!-- credits -->
-<div class="text-center mt-4">
-    <p>
-        <a href="https://jasonwatmore.com/post/2020/07/18/angular-10-user-registration-and-login-example-tutorial" target="_top">Angular 10 - User Registration and Login Example & Tutorial</a>
-    </p>
-    <p>
-        <a href="https://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
-</div>

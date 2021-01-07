@@ -25,7 +25,7 @@ export class AccountService {
     }
 
     login(username, password) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.http.post<User>(`${environment.apiUrl}/loginSanta`, { username, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
@@ -45,12 +45,24 @@ export class AccountService {
         return this.http.post(`${environment.apiUrl}/users/register`, user);
     }
 
+    addPublicacion(user: User) {
+        return this.http.post(`${environment.apiUrl}/addPublicacion`, user);
+    }
+
     getAll() {
         return this.http.get<User[]>(`${environment.apiUrl}/users`);
     }
 
     getById(id: string) {
         return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+    }
+
+    getPublicacionById(id: string) {
+        return this.http.get<User[]>(`${environment.apiUrl}/getPublicacionById/?id=${id}`);
+    }
+
+    getComentarios(idpublicacion: string){
+        return this.http.get<User[]>(`${environment.apiUrl}/getComentarios/?idpublicacion=${idpublicacion}`);
     }
 
     update(id, params) {
