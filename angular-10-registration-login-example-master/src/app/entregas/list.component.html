@@ -1,0 +1,56 @@
+﻿<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row" style="background-color: darkcyan;">
+        <div class="form-group col">
+            <label for="titulo" style=" color: white;">TITULO</label>
+            <input type="text" formControlName="titulo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.titulo.errors }"/>
+            <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                <div *ngIf="f.titulo.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="contenido" style=" color: white;">CONTENIDO</label>
+            <input type="text" formControlName="contenido" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contenido.errors }"/>
+            <div *ngIf="submitted && f.contenido.errors" class="invalid-feedback">
+                <div *ngIf="f.contenido.errors.required">First Name is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row" style="background-color: darkcyan;">
+        <div class="form-group col">
+            <label for="imagen" style=" color: white;">IMAGEN</label>
+            <input type="text" formControlName="imagen" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.imagen.errors }"/>
+            <div *ngIf="submitted && f.imagen.errors" class="invalid-feedback">
+                <div *ngIf="f.imagen.errors.required">First Name is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="idsanta" style=" color: white;">IDSANTA</label>
+            <input type="text" formControlName="idsanta" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.idsanta.errors }"/>
+            <div *ngIf="submitted && f.idsanta.errors" class="invalid-feedback">
+                <div *ngIf="f.idsanta.errors.required">First Name is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            enviar
+        </button>
+    </div>
+</form>
+<div class="col-sm-6" style="align-items: center;" *ngFor="let publi of users">
+    <div class="row">
+        <div class="card text-white bg-success mb-3" style="width: 1000px;">
+            <div class="card-header" style="text-shadow: black;">PUBLICACION ALGRE DE SANTA NO.{{publi.idpublicacion}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{publi.titulo}}</h5>
+                <p class="card-text">{{publi.contenido}}</p>
+                <img src="{{publi.imagen}}" width="100" height="100" />
+                <div>
+                    <a routerLink="edit/{{publi.idpublicacion}}" class="btn btn-sm btn-danger mb-3">ver comentarios</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
