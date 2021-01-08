@@ -27,10 +27,10 @@ export class AddEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.id = this.route.snapshot.params['id'];
-        this.accountService.getComentarios(this.id)
-        .pipe(first())
-        .subscribe(users => this.users = users);
+        // this.id = this.route.snapshot.params['id'];
+        // this.accountService.getComentarios(this.id)
+        // .pipe(first())
+        // .subscribe(users => this.users = users);
     }
 
 }

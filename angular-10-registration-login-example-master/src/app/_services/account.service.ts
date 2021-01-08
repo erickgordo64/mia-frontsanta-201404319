@@ -61,6 +61,10 @@ export class AccountService {
         return this.http.get<User[]>(`${environment.apiUrl}/getPublicacionById/?id=${id}`);
     }
 
+    getEntregasById(id: string) {
+        return this.http.get<User[]>(`${environment.apiUrl}/getEntregasById/?id=${id}`);
+    }
+
     getComentarios(idpublicacion: string){
         return this.http.get<User[]>(`${environment.apiUrl}/getComentarios/?idpublicacion=${idpublicacion}`);
     }

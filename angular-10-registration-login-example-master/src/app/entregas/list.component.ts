@@ -16,6 +16,10 @@ export class ListComponent implements OnInit {
     users = null;
     user = null;
 
+    // center = { lat: -12.0262676, lng: -77.1278653 };
+    // zoom = 15;
+    // display?: google.maps.LatLngLiteral;
+
     constructor(private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
@@ -25,7 +29,7 @@ export class ListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.accountService.getPublicacionById(this.user[0].idsanta)
+        this.accountService.getEntregasById(this.user[0].idsanta)
             .pipe(first())
             .subscribe(users => this.users = users);
         this.form = this.formBuilder.group({
@@ -35,7 +39,6 @@ export class ListComponent implements OnInit {
             idsanta: ['', Validators.required]
         });
 
-        this.f.idsanta.setValue(this.user[0].idsanta)
 
     }
 
@@ -49,7 +52,7 @@ export class ListComponent implements OnInit {
             .subscribe(() => this.users = this.users.filter(x => x.id !== id));
     }
 
-    enviar(){
+    enviar() {
         if (this.form.invalid) {
             return;
         }
@@ -58,14 +61,16 @@ export class ListComponent implements OnInit {
 
         this.accountService.addPublicacion(this.form.value)
             .pipe(first())
-            .subscribe({next: () => {
-                this.alertService.success('comenatrio exitoso', { keepAfterRouteChange: true });
-                window.location.reload();
-            },
-            error: error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }});
+            .subscribe({
+                next: () => {
+                    this.alertService.success('comenatrio exitoso', { keepAfterRouteChange: true });
+                    window.location.reload();
+                },
+                error: error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            });
     }
 
     onSubmit() {
@@ -78,13 +83,15 @@ export class ListComponent implements OnInit {
 
         this.accountService.addPublicacion(this.form.value)
             .pipe(first())
-            .subscribe({next: () => {
-                this.alertService.success('comenatrio exitoso', { keepAfterRouteChange: true });
-                window.location.reload();
-            },
-            error: error => {
-                this.alertService.error(error);
-                this.loading = false;
-            }});
+            .subscribe({
+                next: () => {
+                    this.alertService.success('comenatrio exitoso', { keepAfterRouteChange: true });
+                    window.location.reload();
+                },
+                error: error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            });
     }
 }
