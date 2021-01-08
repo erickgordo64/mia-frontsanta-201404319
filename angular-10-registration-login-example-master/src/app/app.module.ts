@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { GoogleMapsModule} from '@angular/google-maps';
+// import { AgmCoreModule } from '@agm/core';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
